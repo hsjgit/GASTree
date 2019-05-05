@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title th:text="注册">SignUp</title>
+    <!-- Bootstrap core CSS -->
+    <!--th:-->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body class="text-center">
+<form class="form-signin" action="dashboard.html" th:action="@{/registerUser}" method="post">
+    <img class="mb-4" th:src="@{/fanqie.png}" src="asserts/img/bootstrap-solid.svg" alt="">
+    <h1 class="h3 mb-3 font-weight-normal" >Please sign up</h1>
+    <h1>注册</h1>
+    <label class="sr-only">用户名</label>
+    <input type="text"  name="username" class="form-control" placeholder="Username"  autofocus="">
+    <label class="sr-only" >邮箱</label>
+    <input type="email" name="useremail" class="form-control" placeholder="huang_shi_jie@qq.com"  required="">
+    <label class="sr-only" >密码</label>
+    <input type="password" name="password" class="form-control" placeholder="Password"  required="">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" >注册</button>
+</form>
+
+</body>
+
+</html>

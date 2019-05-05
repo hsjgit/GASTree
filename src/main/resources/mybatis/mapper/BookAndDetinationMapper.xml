@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsj.mapper.BookAndDetinationMapper">
+    <insert id="add">
+        insert into bookanddetination  (bookname,diqu,author,email,text.time)
+        values (#{bookname},#{diqu},#{author},#{email},#{text},#{time});
+    </insert>
+    <select id="select" resultType="com.hsj.bean.BookAndDestination">
+        SELECT bookname,diqu,time FROM bookanddetination WHERE author=#{author}
+    </select>
+</mapper>
+<!--对应捐书的表-->

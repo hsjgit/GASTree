@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | dark forest law</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            /* 隐藏body窗口区域滚动条 */
+        }
+        .webgl-content{
+            z-index: -1;
+        }
+    </style>
+    <link rel="stylesheet" href="unity/TemplateData/style.css">
+    <script src="unity/TemplateData/UnityProgress.js"></script>
+    <script src="unity/Build/UnityLoader.js"></script>
+    <script>
+        var unityInstance = UnityLoader.instantiate("unityContainer", "unity/Build/web.json", {onProgress: UnityProgress});
+    </script>
+</head>
+<body>
+<h1><a href="/" style="text-decoration: none">返回</a></h1><br/>
+<div class="webgl-content">
+
+    <div id="unityContainer" style="width: 1535.5px; height: 805px"></div>
+
+    <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+
+        <div class="title">dark forest law</div>
+    </div>
+</div>
+</body>
+</html>

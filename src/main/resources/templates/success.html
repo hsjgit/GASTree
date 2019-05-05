@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册成功</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册成功</title>
+</head>
+<body>
+前往邮箱激活账户秒
+<span id="remainSeconds">3</span>
+<script type="text/javascript">
+    setInterval(jump,1000);
+    var sec = 3;
+    function jump(){
+        sec--;
+        if(sec > 0){
+            document.getElementById('remainSeconds').innerHTML = sec;
+
+        }else{
+            window.location.href = '/log';
+        }
+    }
+</script>后自动跳转到<a th:href="@{/log}" style="text-decoration: none">登录</a>界面
+</body>
+</html>

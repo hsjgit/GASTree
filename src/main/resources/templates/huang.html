@@ -1,0 +1,176 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>threeJS-Loader-GLTF</title>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        #WebGL {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+<script th:src="@{/build/three.js}" src="build/three.js"></script>
+<script th:src="@{/js/loaders/GLTFLoader.js}" src="js/loaders/GLTFLoader.js"></script>
+<script th:src="@{/js/controls/OrbitControls.js}" src="js/controls/OrbitControls.js"></script>
+<div id="WebGL"></div>
+<script>
+    var container, camera, scene, renderer, geometry, material, animate, controls; //常用变量
+    var spotLight, mshStdBox; //自定义对象变量
+    var target = new THREE.Vector3(0, 30, 0);
+    var model, skeleton;
+    var webGLW = $('#WebGL').width();
+    var webGLH = $('#WebGL').height();
+    init();
+    animate();
+
+    function init() {
+        container = document.getElementById('WebGL');
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xcfcfcf);
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 100, 150);
+
+        var ambient = new THREE.AmbientLight(0xffffff, 0.1);
+        scene.add(ambient);
+
+        lights(); //灯光：聚光灯
+        lightsHelper(spotLight); //灯光显示助手
+        plane() //平面
+        Box(); //旋转的立方体
+        loadModel(); //添加人物模型
+        rendererScene(); //场景渲染
+        OrbitControls(camera, renderer); //OrbitControls控件模块，90版本鼠标右键上下是移动，96版本之后右键上下是缩放
+        window.addEventListener('resize', onWindowResize, false); //监听屏幕变化
+
+    }
+
+    function plane() {
+        // PolarGridHelper( radius：标网格的半径, radials：径向线的数量, circles：圆圈数,
+        // divisions：每个圆圈使用的线段数, color1：用于网格元素的第一种颜色, color2：用于网格元素的第一种颜色 )
+        var radius = 100;
+        var radials = 16;
+        var circles = 8;
+        var divisions = 64;
+        var PolarGridHelper = new THREE.PolarGridHelper(radius, radials, circles, divisions);
+        PolarGridHelper.position.set(0, -20, 0)
+        scene.add(PolarGridHelper)
+    }
+
+    function Box() {
+        // BoxGeometry( width, height, depth, widthSegments, heightSegments, depthSegments )
+        geometry = new THREE.BoxGeometry(80, 5, 80, 3, 3, 3);
+        var matStdObjects = new THREE.MeshStandardMaterial({
+            color: 0xA0cf00,
+            roughness: 0,
+            metalness: 0.6
+        });
+        mshStdBox = new THREE.Mesh(geometry, matStdObjects);
+        mshStdBox.position.set(0, -5, 0);
+        mshStdBox.rotation.set(0, Math.PI / 2.0, 0);
+        mshStdBox.castShadow = true;
+        mshStdBox.receiveShadow = true;
+        scene.add(mshStdBox);
+    }
+
+    function lights() {
+        //  SpotLight( color：颜色, intensity：强度, distance：发光距离, angle：角度, penumbra：边缘范围, decay：衰减 )
+        spotLight = new THREE.SpotLight(0xffffff, 1);
+        spotLight.position.set(15, 120, 50);
+        spotLight.angle = Math.PI / 4;
+        spotLight.penumbra = 0.05; //边缘范围，反比
+        spotLight.decay = 2; //衰减系数，反比
+        spotLight.distance = 400; //发光距离
+        spotLight.castShadow = true; //阴影
+        spotLight.shadow.mapSize.width = 1024;
+        spotLight.shadow.mapSize.height = 1024;
+        spotLight.shadow.camera.near = 10; //近截面
+        spotLight.shadow.camera.far = 250;
+        scene.add(spotLight);
+    }
+
+    function lightsHelper(lightsObject) {
+        // 聚光灯显示助手SpotLightHelper( light:灯光, color：颜色 )
+        lightHelper = new THREE.SpotLightHelper(lightsObject, 0xdfdfdf);
+        scene.add(lightHelper);
+        var mesh = new THREE.Mesh(new THREE.PlaneBufferGeometry(200, 200), new THREE.MeshPhongMaterial({
+            color: 0x9cfcf99,
+            depthWrite: false
+        }));
+        mesh.rotation.x = -Math.PI / 2;
+        mesh.position.set(0, -20, 0)
+        mesh.receiveShadow = true;
+        scene.add(mesh);
+    }
+
+    function loadModel() {
+        var loader = new THREE.GLTFLoader();
+        loader.load('models/gltf/Tree/tree.glb', function (gltf) {
+            model = gltf.scene;
+            scene.add(model);
+            model.traverse(function (object) {
+                if (object.isMesh) {
+                    object.castShadow = true;
+                    console.log(object);
+                }
+            });
+            model.rotation.y = -Math.PI;
+            model.scale.set(50, 50, 50);
+
+            // 骨骼显示助手
+            skeleton = new THREE.SkeletonHelper(model);
+            scene.add(skeleton);
+        });
+    }
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+    }
+
+    function rendererScene() {
+        renderer = new THREE.WebGLRenderer({
+            antialias: true
+        });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.gammaInput = true;
+        renderer.gammaOutput = true;
+        container.appendChild(renderer.domElement);
+    }
+
+    function OrbitControls(camera, renderer) {
+        //OrbitControls控件操作模块
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.target=target;//控制的target
+        controls.autoRotate = true;//是否自动旋转
+        controls.autoRotateSpeed = 0.5;//自动旋转速度，正比
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        if (controls) controls.update();
+        mshStdBox.rotation.y += 0.01;
+        // camera.lookAt(target);
+        renderer.render(scene, camera);
+    };
+</script>
+</body>
+
+</html>

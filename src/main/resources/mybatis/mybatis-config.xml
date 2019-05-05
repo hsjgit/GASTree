@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--启用二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+        <!--开启延迟加载的功能-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--设置不要积极的查找关联的对象-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!--延迟加载触发的方法-->
+        <setting name="lazyLoadTriggerMethods" value="clone"/>
+        <!--开启驼峰命名-->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+</configuration>

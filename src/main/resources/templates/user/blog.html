@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>GASTree</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="asserts/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="blog.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="asserts/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="asserts/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="#">写好的博客</a>
+          <a class="blog-nav-item" href="#">主页</a>
+          <a class="blog-nav-item" th:href="@{/book}" href="#">捐本书</a>
+          <a class="blog-nav-item" href="#">联系我们</a>
+          <a class="blog-nav-item" href="#">Waja</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">Waja 的文章</h1>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post" >
+            <h2 class="blog-post-title"><a th:href="@{/getblog}" style="text-decoration: none" >Java 的一些总结</a></h2>
+            <p class="blog-post-meta" >2019-4-2 <a href="#">Waja</a></p>
+          </div><!-- /.blog-post -->
+          <nav>
+            <ul class="pager">
+              <li><a th:href="@{/givemeabook}" href="#">编成书</a></li>
+            </ul>
+          </nav>
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>关于</h4>
+            <p>我们的目标 <em>希望每个人都学有所成</em> 我们的这个博客不同意csdn等一些传统的博客网站，那些网站提供的更主要体现的是交流，我们主要是为用户提供每个人的是有的书房</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>捐赠记录</h4>
+            <ol class="list-unstyled" >
+              <li><a href="#" t>2019-4-25|唐诗三百首|重庆市秀山县三合希望小学</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+            </ol>
+            <h4>自己的书</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">葵花宝典</a></li>
+              <li><a href="#">降龙十八掌</a></li>
+              <li><a href="#">乾坤大挪移</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script  th:src="@{/webjars/jquery/3.3.1/jquery.js}" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="asserts/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="asserts/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="asserts/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

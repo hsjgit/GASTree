@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>mkToHtmlDemo</title>
+    <link href="css/video-js.min.css" rel="stylesheet">
+    <!--boostrap-->
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="asserts/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="asserts/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link  href="asserts/css/theme.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="asserts/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="asserts/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+    <!--引入样式文件-->
+    <link rel="stylesheet" th:href="@{/webjars/editor.md/1.5.0/examples/css/style.css}" href="css/style.css" />
+    <link rel="stylesheet" th:href="@{/webjars/editor.md/1.5.0/css/editormd.preview.css}" href="css/editormd.preview.css" />
+
+    <!--引入js文件-->
+    <script th:src="@{/webjars/editor.md/1.5.0/examples/js/jquery.min.js}" src="editor.md-master/examples/js/jquery.min.js"></script>
+    <script th:src="@{/webjars/editor.md/1.5.0/lib/marked.min.js}" src="editor.md-master/lib/marked.min.js"></script>
+    <script th:src="@{/webjars/editor.md/1.5.0/lib/prettify.min.js}" src="editor.md-master/lib/prettify.min.js"></script>
+    <script th:src="@{/webjars/editor.md/1.5.0/lib/raphael.min.js}" src="editor.md-master/lib/raphael.min.js"></script>
+    <script th:src="@{/webjars/editor.md/1.5.0/lib/underscore.min.js}" src="editor.md-master/lib/underscore.min.js"></script>
+    <script th:src="@{/webjars/editor.md/1.5.0/lib/sequence-diagram.min.js}" src="editor.md-master/lib/sequence-diagram.min.js"></script>
+    <script th:src="@{/webjars/editor.md/1.5.0/lib/flowchart.min.js}" src="editor.md-master/lib/flowchart.min.js"></script>
+    <script th:src="@{/webjars/editor.md/1.5.0/lib/jquery.flowchart.min.js}" src="editor.md-master/lib/jquery.flowchart.min.js"></script>
+    <script th:src="@{/webjars/editor.md/1.5.0/editormd.js}" src="editor.md-master/editormd.js"></script>
+
+</head>
+<body>
+<!--输入需要转换的markdown文件开始-->
+<textarea id="demo1" style="width:0px;height:0px;" th:text="${code}">
+        </textarea>
+<div class="m">
+    <video id="my-video" class="video-js" controls preload="auto" width="390" height="210"
+            data-setup="{}" muted="true">
+        <source src="video/c48c977d-40d4-4d91-8a94-7e90ba76f0c82019-05-03.mp4" type="video/mp4">
+        <!--<source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+        <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">-->
+        <p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a> </p>
+    </video>
+    <script src="js/video.min.js"></script>
+    <script type="text/javascript">
+        //设置中文
+        videojs.addLanguage('zh-CN', {
+            "Play": "播放",
+            "Pause": "暂停",
+            "Current Time": "当前时间",
+            "Duration": "时长",
+            "Remaining Time": "剩余时间",
+            "Stream Type": "媒体流类型",
+            "LIVE": "直播",
+            "Loaded": "加载完毕",
+            "Progress": "进度",
+            "Fullscreen": "全屏",
+            "Non-Fullscreen": "退出全屏",
+            "Mute": "静音",
+            "Unmute": "取消静音",
+            "Playback Rate": "播放速度",
+            "Subtitles": "字幕",
+            "subtitles off": "关闭字幕",
+            "Captions": "内嵌字幕",
+            "captions off": "关闭内嵌字幕",
+            "Chapters": "节目段落",
+            "Close Modal Dialog": "关闭弹窗",
+            "Descriptions": "描述",
+            "descriptions off": "关闭描述",
+            "Audio Track": "音轨",
+            "You aborted the media playback": "视频播放被终止",
+            "A network error caused the media download to fail part-way.": "网络错误导致视频下载中途失败。",
+            "The media could not be loaded, either because the server or network failed or because the format is not supported.": "视频因格式不支持或者服务器或网络的问题无法加载。",
+            "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "由于视频文件损坏或是该视频使用了你的浏览器不支持的功能，播放终止。",
+            "No compatible source was found for this media.": "无法找到此视频兼容的源。",
+            "The media is encrypted and we do not have the keys to decrypt it.": "视频已加密，无法解密。",
+            "Play Video": "播放视频",
+            "Close": "关闭",
+            "Modal Window": "弹窗",
+            "This is a modal window": "这是一个弹窗",
+            "This modal can be closed by pressing the Escape key or activating the close button.": "可以按ESC按键或启用关闭按钮来关闭此弹窗。",
+            ", opens captions settings dialog": ", 开启标题设置弹窗",
+            ", opens subtitles settings dialog": ", 开启字幕设置弹窗",
+            ", opens descriptions settings dialog": ", 开启描述设置弹窗",
+            ", selected": ", 选择",
+            "captions settings": "字幕设定",
+            "Audio Player": "音频播放器",
+            "Video Player": "视频播放器",
+            "Replay": "重播",
+            "Progress Bar": "进度小节",
+            "Volume Level": "音量",
+            "subtitles settings": "字幕设定",
+            "descriptions settings": "描述设定",
+            "Text": "文字",
+            "White": "白",
+            "Black": "黑",
+            "Red": "红",
+            "Green": "绿",
+            "Blue": "蓝",
+            "Yellow": "黄",
+            "Magenta": "紫红",
+            "Cyan": "青",
+            "Background": "背景",
+            "Window": "视窗",
+            "Transparent": "透明",
+            "Semi-Transparent": "半透明",
+            "Opaque": "不透明",
+            "Font Size": "字体尺寸",
+            "Text Edge Style": "字体边缘样式",
+            "None": "无",
+            "Raised": "浮雕",
+            "Depressed": "压低",
+            "Uniform": "均匀",
+            "Dropshadow": "下阴影",
+            "Font Family": "字体库",
+            "Proportional Sans-Serif": "比例无细体",
+            "Monospace Sans-Serif": "单间隔无细体",
+            "Proportional Serif": "比例细体",
+            "Monospace Serif": "单间隔细体",
+            "Casual": "舒适",
+            "Script": "手写体",
+            "Small Caps": "小型大写字体",
+            "Reset": "重启",
+            "restore all settings to the default values": "恢复全部设定至预设值",
+            "Done": "完成",
+            "Caption Settings Dialog": "字幕设定视窗",
+            "Beginning of dialog window. Escape will cancel and close the window.": "开始对话视窗。离开会取消及关闭视窗",
+            "End of dialog window.": "结束对话视窗"
+        });
+        var myPlayer = videojs('my-video');
+        videojs("my-video").ready(function(){
+            var myPlayer = this;
+            myPlayer.play();
+        });
+
+    </script>
+<!--输入需要转换的markdown文件结束-->
+
+<!--点击该按钮进行转换-->
+<!--<button onclick="mdToHml();" type="button">点击转Html</button>-->
+<!--在该div中展示,如有初始化的数据可以放在textarea中-->
+<div id="testEditorMdview" style="float: left">
+    <textarea id="appendTest" style="display:none;"></textarea>
+</div>
+<div class="page-header">
+</div>
+<p>
+    <button type="button" class="btn btn-primary"><a th:href="@{/ed}">编辑</a></button>
+</p>
+
+
+<!--js开始-->
+<script type="text/javascript">
+
+    //markDown转HTMl的方法
+    (function mdToHml(){
+
+        //先对容器初始化，在需要展示的容器中创建textarea隐藏标签，
+        $("#testEditorMdview").html('<textarea id="appendTest" style="display:none;"></textarea>');
+        var content=$("#demo1").val();//获取需要转换的内容
+        $("#appendTest").val(content);//将需要转换的内容加到转换后展示容器的textarea隐藏标签中
+
+        //转换开始,第一个参数是上面的div的id
+        editormd.markdownToHTML("testEditorMdview", {
+            htmlDecode: "style,script,iframe", //可以过滤标签解码
+            emoji: true,
+            taskList:true,
+            tex: true,               // 默认不解析
+            flowChart:true,         // 默认不解析
+            sequenceDiagram:true,  // 默认不解析
+        });
+    }());
+</script>
+<!--js结束-->
+<script th:src="@{/webjars/jquery/3.3.1/jquery.js}" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="asserts/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="asserts/js/bootstrap.min.js"></script>
+<script src="asserts/js/docs.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="asserts/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

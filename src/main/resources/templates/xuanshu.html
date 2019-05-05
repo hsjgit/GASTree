@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="get" action="/xs">
+    <input type="checkbox" name="1" th:value="'dasdas'"/><a th:href="@{/getblog}" th:text="'java的一些总结'" style="text-decoration: none;color: #3295FF;"></a><br/>
+    <input type="checkbox" name="2" th:value="1">我要参与<br/>
+    <input type="submit"  value="提交"/>
+</form>
+</body>
+</html>

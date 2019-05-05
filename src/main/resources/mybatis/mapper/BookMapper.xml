@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hsj.mapper.BookMapper">
+    <insert id="add">
+        insert into book(name,path,author,number)
+        VALUE (#{name},#{path},#{author},#{number})
+    </insert>
+    <select id="select" resultType="com.hsj.bean.Book">
+        SELECT name,path,number FROM book WHERE author=#{author}
+    </select>
+</mapper>
+<!--对应用户编的书的表-->
