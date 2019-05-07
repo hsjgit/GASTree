@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
+ * @author waja
  * Created by 黄仕杰 on 2019/5/3.
  */
 public interface BookMapper {

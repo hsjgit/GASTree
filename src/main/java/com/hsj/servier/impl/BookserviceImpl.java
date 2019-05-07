@@ -9,10 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
+ * @author waja
  * Created by 黄仕杰 on 2019/5/3.
  */
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Service
 public class BookserviceImpl implements IBookservice {
+
     @Autowired
     private BookMapper bookMapper;
     /**

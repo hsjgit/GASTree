@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>登陆拦截器<p/>
+ * @author waja
  * Created by 黄仕杰 on 2019/4/15.
  */
 @Component

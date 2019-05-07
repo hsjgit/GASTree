@@ -1,38 +1,41 @@
 package com.hsj;
-import com.alibaba.fastjson.JSONArray;
-import com.hsj.bean.BookAndDestination;
-import com.hsj.bean.GlobalVaiable;
+import com.hsj.bean.GetBlog;
 import com.hsj.bean.User;
-import com.hsj.entity.GiveTime;
-import com.hsj.servier.Person;
+import com.hsj.mapper.UserMapper;
 import com.hsj.servier.ReadJson;
-import com.hsj.servier.UserServicer;
 import com.hsj.servier.impl.BookAndServiceImpl;
 import com.hsj.servier.impl.BookserviceImpl;
 import com.hsj.servier.impl.GetServiceImpl;
 import com.hsj.servier.impl.UserServiceImpl;
+import com.sun.org.apache.xpath.internal.operations.Gt;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import sun.util.resources.cldr.es.CalendarData_es_GT;
 
 import java.io.*;
-import java.time.LocalDateTime;
-import java.util.List;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AgorithmwebApplicationTests {
 	@Autowired
-	private ReadJson readJson;
+	private GetServiceImpl getService;
 	@Autowired
-	private BookserviceImpl person;
+	private UserServiceImpl userService;
 	@Autowired
-	private BookAndServiceImpl bookAndService;
+	private UserMapper userMapper;
 	@Test
-	public void a() throws IOException {
+	public void a() {
+		GetBlog getBlog = new GetBlog();
+		getBlog.setAuthor("hsj");
+		getBlog.setTitle("dsa");
+		getBlog.setTime("dsa");
+		getBlog.setVideo("dsa");
+		getBlog.setPath("sda");
+		getService.add(getBlog);
 
 	}
 }

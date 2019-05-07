@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 /**
  * <p>这个是博客最后查询的service层<p/>
+ * @author waja
  * Created by 黄仕杰 on 2019/5/3.
  */
 @Service
 public class GetServiceImpl implements IGetservier {
+
     @Autowired
     private GetBlogMapper servier;
     /**

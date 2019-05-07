@@ -14,13 +14,17 @@ import javax.mail.internet.MimeMessage;
 
 
 /**
+ * @author waja
  * Created by 黄仕杰 on 2019/4/13.
  */
 @Service
 public class MailServiceImpl implements MailService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    /**
+     * SpringBoot自带的邮件发送接口
+     */
     @Autowired
-    private JavaMailSender mailSender;//SpringBoot自带的邮件发送接口
+    private JavaMailSender mailSender;
     /**
      * 配置文件中我的qq邮箱
      */

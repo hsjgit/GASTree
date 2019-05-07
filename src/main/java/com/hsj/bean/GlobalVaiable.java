@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * <p>为了登录的时候可以快快一点，提前一次性把所有用户都先查出来<p/>
+ * @author waja
  * Created by 黄仕杰 on 2019/5/3.
  */
 @Component

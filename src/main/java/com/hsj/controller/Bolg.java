@@ -6,6 +6,7 @@ import com.hsj.bean.User;
 import com.hsj.entity.BlogToGetBolog;
 import com.hsj.entity.GiveTime;
 import com.hsj.servier.impl.GetServiceImpl;
+import com.hsj.servier.otherservice.GivePath;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,39 +29,47 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
+ * @author waja
  * Created by 黄仕杰 on 2019/4/13.
  */
+@SuppressWarnings({"all"})
 @Controller
 public class Bolg {
     private static String UPLOADED_FOLDER = "D://temp//";
     @Autowired
     private GetServiceImpl getService;
+    @Autowired
+    private GivePath givePath;
+    /**
+     * 把提交的博客的存储的路径存到数据库
+     * @param blog
+     * @param request
+     */
     @ResponseBody
     @RequestMapping("/submit")
     public void su(Blog blog,HttpServletRequest request) {
         try {
-            String time = GiveTime.formatDate(LocalDateTime.now());
-            String path1 = "D:\\blog\\"  +time;
-            File file = new File(path1);
-            if (!file.exists()) {
-                file.mkdir();
-            }
-            String path = path1 + "\\" + blog.getTitle() + time + ".txt";
-            File file1 = new File(path);
-            file1.createNewFile();
-            PrintWriter printWriter = new PrintWriter(new FileWriter(file1), true );
+            String path = givePath.getPath(blog);
+            PrintWriter printWriter = new PrintWriter(new FileWriter(path), true );
             Scanner in = new Scanner(blog.getContent());
             while (in.hasNext()) {
                 printWriter.println(in.nextLine());
             }
             printWriter.flush();
             User user = (User)request.getSession().getAttribute("user");
-            getService.add(BlogToGetBolog.getblog(blog,user.getUsername(),path,time));
+            //这段有问题，现在先去把钟怡教的任务做了，再回来继续写
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
+
+    /**
+     * 从数据库中查询出博客的存储路径
+     * @param request
+     * @return
+     */
     @RequestMapping("/getblog")
     public String huang(HttpServletRequest request){
         StringBuilder str = new StringBuilder();

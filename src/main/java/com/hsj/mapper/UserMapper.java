@@ -1,10 +1,12 @@
 package com.hsj.mapper;
 import com.hsj.bean.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 
 /**
+ * @author waja
  * Created by 黄仕杰 on 2019/2/17.
  */
 public interface UserMapper {
@@ -34,4 +36,6 @@ public interface UserMapper {
      */
     User loginUser(User user);
     List<User> alllist();
+
+    void delete(@Param("name") String name);
 }

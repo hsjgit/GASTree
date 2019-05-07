@@ -4,16 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hsj.mapper.GetBlogMapper">
     <insert id="add">
-        insert into getblog (title,path,author) values (#{title},#{path},#{author},#{time});
+        insert into getblog (title,path,author,time,video) values (#{title},#{path},#{author},#{time},#{video});
     </insert>
     <update id="updata">
         UPDATE getblog SET title=#{title} where author=#{author} and path=#{path}
     </update>
     <delete id="delete">
-        DELETE * FROM getblog WHERE title=#{title} and author=#{author}
+        DELETE  FROM getblog WHERE title=#{title} and author=#{author}
     </delete>
     <select id="select" resultType="com.hsj.bean.GetBlog">
-        SELECT path,time FROM getblog WHERE author=#{author}
+        SELECT path,time,video FROM getblog WHERE author=#{author}
     </select>
 </mapper>
 <!--把存储的博客查询出来并展现到网页上去-->

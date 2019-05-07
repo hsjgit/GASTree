@@ -21,6 +21,7 @@ import java.util.UUID;
 
 /**
  * 写的一些功能，但是觉得好像和server有点冲突
+ * @author waja
  * Created by 黄仕杰 on 2019/4/25.
  */
 @Controller

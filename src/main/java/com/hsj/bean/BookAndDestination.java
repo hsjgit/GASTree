@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * <p>用户捐的书<p/>
+ * @author waja
  * Created by 黄仕杰 on 2019/5/3.
  */
 @Data

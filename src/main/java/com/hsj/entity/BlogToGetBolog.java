@@ -5,6 +5,7 @@ import com.hsj.bean.GetBlog;
 
 
 /**
+ * @author waja
  * Created by 黄仕杰 on 2019/5/4.
  */
 public class BlogToGetBolog {

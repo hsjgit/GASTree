@@ -3,6 +3,7 @@ package com.hsj.bean;
 import lombok.Data;
 
 /**
+ * @author waja
  * Created by 黄仕杰 on 2019/4/30.
  */
 @Data
@@ -16,4 +17,5 @@ public class Book {
     public int number;
     private String author;
     private String path;
+
 }
