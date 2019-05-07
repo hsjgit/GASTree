@@ -6,6 +6,7 @@ import com.hsj.bean.User;
 import com.hsj.entity.BlogToGetBolog;
 import com.hsj.entity.GiveTime;
 import com.hsj.servier.impl.GetServiceImpl;
+import com.hsj.servier.otherservice.EnhanceGetBlogService;
 import com.hsj.servier.otherservice.GivePath;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,8 @@ public class Bolg {
     private GetServiceImpl getService;
     @Autowired
     private GivePath givePath;
+    @Autowired
+    private EnhanceGetBlogService enhanceGetBlogService;
     /**
      * 把提交的博客的存储的路径存到数据库
      * @param blog
@@ -58,7 +61,7 @@ public class Bolg {
             printWriter.flush();
             User user = (User)request.getSession().getAttribute("user");
             //这段有问题，现在先去把钟怡教的任务做了，再回来继续写
-
+            enhanceGetBlogService.addPath(blog,user,"dsa");
         } catch (IOException e) {
             e.printStackTrace();
         }

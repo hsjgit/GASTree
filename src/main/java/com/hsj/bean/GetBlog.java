@@ -1,5 +1,6 @@
 package com.hsj.bean;
 
+
 import lombok.Data;
 
 /**
@@ -14,4 +15,5 @@ public class GetBlog {
     private String author;
     private String time;
     private String video;
+
 }

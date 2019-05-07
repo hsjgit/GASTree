@@ -12,6 +12,9 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.lang.StringUtils;
+
+import javax.sound.midi.Soundbank;
+
 public class DzhiZhuan {
     public static final String KEY_1 = "7d9fbeb43e975cd1e9477a7e5d5e192a";
     /**
@@ -59,4 +62,9 @@ public class DzhiZhuan {
         return null;
     }
 
+    public static void main(String[] args) {
+        Map<String,String> map=DzhiZhuan.getGeocoderLatitude("重庆邮电大学移通学院");
+        System.out.println(map.get("经度"));
+        System.out.println(map.get("纬度"));
+    }
 }

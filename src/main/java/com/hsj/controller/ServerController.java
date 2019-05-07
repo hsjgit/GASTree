@@ -33,7 +33,7 @@ public class ServerController {
         return "adai/tpmo/contact";
     }
     /**
-     * 捐书的时候还有一个添加地址一栏，我不会加，就是有跳到另外一个野面上去在在添加
+     * 捐书的时候还有一个添加地址一栏，我不会加，就是有跳到另外一个页面上去在在添加
      * @return
      */
     @RequestMapping(value = "/server2")

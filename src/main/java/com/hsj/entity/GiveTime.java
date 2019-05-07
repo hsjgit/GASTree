@@ -1,7 +1,5 @@
 package com.hsj.entity;
 
-import com.hsj.servier.impl.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -11,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * <p>为了保证线程安全<p/>
  * @author waja
- * Created by 黄仕杰 on 2019/5/4.
+ * Created by 黄仕杰 on 2019/5/4
  */
 @Component
 public class GiveTime {

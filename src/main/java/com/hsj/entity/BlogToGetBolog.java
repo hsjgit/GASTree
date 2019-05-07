@@ -2,19 +2,27 @@ package com.hsj.entity;
 
 import com.hsj.bean.Blog;
 import com.hsj.bean.GetBlog;
+import com.hsj.servier.otherservice.GivePath;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import java.io.IOException;
+import java.time.LocalDateTime;
 
 
 /**
  * @author waja
  * Created by 黄仕杰 on 2019/5/4.
  */
+@Component
 public class BlogToGetBolog {
-    public static GetBlog getblog(Blog blog, String... strings) {
-        GetBlog getBlog = new GetBlog();
+    @Autowired
+    private GivePath givePath;
+    public GetBlog getblog(Blog blog,GetBlog getBlog) throws IOException {
+        String time = GiveTime.formatDate(LocalDateTime.now());
+        String path=givePath.getPath(blog);
         getBlog.setTitle(blog.getTitle());
-        getBlog.setAuthor(strings[0]);
-        getBlog.setPath(strings[1]);
-        getBlog.setTime(strings[2]);
+        getBlog.setPath(path);
+        getBlog.setTime(time);
         return getBlog;
     }
 }

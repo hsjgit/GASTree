@@ -1,6 +1,7 @@
 package com.hsj.controller;
 
 import com.hsj.bean.User;
+import com.hsj.entity.Video;
 import com.hsj.servier.impl.BookAndServiceImpl;
 import com.hsj.servier.impl.GetServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,8 @@ public class FunctionController {
     private GetServiceImpl getService;
     @Autowired
     private BookAndServiceImpl andService;
+    @Autowired
+    private Video uservideo;
     /**
      * <p>跳到博客的列表页面，在跳到博客的页面之前把所有的博客都查出来，放到session中<p/>
      * <p>跳到博客的列表页面，在跳到博客的页面之前把所有的捐赠记录都查出来，放到session中<p/>
@@ -48,26 +51,13 @@ public class FunctionController {
 
     /**
      * 视频上传
-     * @param video
+     * @param video 视频文件
      * @return
      */
     @RequestMapping(value = "/video")
     public String uploadvideo(MultipartFile video) {
-        //获取视频的名字
-        String name = video.getOriginalFilename();
-        System.out.println(name);
-        String dirparh = "D:\\intelliJ\\java_idea\\agorithmweb\\src\\main\\resources\\resources\\video\\";
-        File file = new File(dirparh);
-        if (!file.exists()){
-            file.mkdir();
-        }
-        //给一个新的名字
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String time=format.format(new Date());
-        String newName = UUID.randomUUID() + time+name.substring(name.lastIndexOf("."));
-        System.out.println(newName);
         try {
-            video.transferTo(new File(dirparh+newName));
+            uservideo.upload(video);
             return "redirect:/getblog";
         } catch (IOException e) {
             e.printStackTrace();
