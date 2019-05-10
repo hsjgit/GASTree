@@ -12,10 +12,13 @@
           href="/editormd/css/editormd.css"/>
 </head>
 <body>
+<form th:action="@{/video}" method="post" enctype="multipart/form-data">
+    <input type="file" name="video" value="说明的视频">
+    <input type="submit" value="提交" id="video">
+</form>
 <div>
     <input type="text" name="title" style="width: 500px" id="title"/>
     <input type="submit" title="发布" id="submitBtn"/>
-
 </div>
 <div class="editormd" id="test-editormd">
     <textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc" id="content"></textarea>
@@ -77,9 +80,5 @@
 
     });
 </script>
-<form th:action="@{/video}" method="post" enctype="multipart/form-data">
-    <input type="file" name="video" value="说明的视频">
-    <input type="submit" value="提交">
-</form>
 </body>
 </html>

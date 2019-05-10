@@ -145,7 +145,7 @@
         <viz:position x="-385.2226" y="-393.5572" z="0.0"></viz:position>
         <viz:color r="236" g="81" b="72"></viz:color>
       </node>
-      <node id="17" label="Listolier">
+      <node id="17" label="Linux常用工具">
         <attvalues>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -153,7 +153,7 @@
         <viz:position x="-516.55884" y="-393.98975" z="0.0"></viz:position>
         <viz:color r="236" g="81" b="72"></viz:color>
       </node>
-      <node id="18" label="Fameuil">
+      <node id="18" label="Linux常用命令">
         <attvalues>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -161,7 +161,7 @@
         <viz:position x="-464.79382" y="-493.57944" z="0.0"></viz:position>
         <viz:color r="236" g="81" b="72"></viz:color>
       </node>
-      <node id="19" label="Blacheville">
+      <node id="19" label="Linux网络编程">
         <attvalues>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -169,7 +169,7 @@
         <viz:position x="-515.1624" y="-456.9891" z="0.0"></viz:position>
         <viz:color r="236" g="81" b="72"></viz:color>
       </node>
-      <node id="20" label="Favourite">
+      <node id="20" label="I/O">
         <attvalues>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -177,7 +177,7 @@
         <viz:position x="-408.12122" y="-464.5048" z="0.0"></viz:position>
         <viz:color r="236" g="81" b="72"></viz:color>
       </node>
-      <node id="21" label="Dahlia">
+      <node id="21" label="Shell编程">
         <attvalues>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>

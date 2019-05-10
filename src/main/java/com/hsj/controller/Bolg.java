@@ -53,6 +53,7 @@ public class Bolg {
         try {
             User user = (User) userClass.getser("D:\\userclass\\data.ser");
             request.getSession().setAttribute("user", user);
+            System.out.println(request.getSession().getAttribute("user"));
             String path = givePath.getPath(blog);
             PrintWriter printWriter = new PrintWriter(new FileWriter("D:\\blog\\网络.txt"), true );
             Scanner in = new Scanner(blog.getContent());
@@ -72,12 +73,6 @@ public class Bolg {
         return "index";
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/addBlog")
-    public String addBlog(HttpServletRequest request) {
-        return request.getSession().getAttribute("user").toString();
-
-    }
 
     /**
      * <p>java总结<p/>
@@ -196,7 +191,6 @@ public class Bolg {
             resultMap.put("message", "上传失败！");
             e.printStackTrace();
         }
-        System.out.println(resultMap.get("success"));
         return resultMap;
     }
 

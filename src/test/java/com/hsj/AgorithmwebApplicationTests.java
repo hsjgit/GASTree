@@ -1,8 +1,11 @@
 package com.hsj;
 
 
+import com.hsj.bean.AllDetinationBook;
+import com.hsj.mapper.AllDetinationBookMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -26,6 +29,8 @@ import java.util.Calendar;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AgorithmwebApplicationTests {
+	@Autowired
+	private AllDetinationBookMapper bookMapper;
 	@Test
 	public void a() throws Exception {
 		Gexf gexf = new GexfImpl();
@@ -75,6 +80,15 @@ public class AgorithmwebApplicationTests {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+	}
+	@Test
+	public void b() {
+		AllDetinationBook book = new AllDetinationBook();
+		book.setBookname("百科全书");
+		book.setBooknumber("0004");
+		book.setNumber(2036);
+		bookMapper.add(book);
 
 	}
 }
