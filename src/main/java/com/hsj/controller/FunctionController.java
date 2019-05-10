@@ -42,6 +42,8 @@ public class FunctionController {
     @RequestMapping(value = "/learnjava")
     public String leanjava(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
+        System.out.println(user);
+
         //把用户所有的博客都查出来
         //request.getSession().setAttribute("allblog", getService.select(user.getUsername()));
         //把用户所有的捐赠记录都查出来

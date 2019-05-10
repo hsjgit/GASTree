@@ -2,7 +2,10 @@ package com.hsj.controller;
 
 import com.hsj.common.UUIDUtils;
 import com.hsj.bean.User;
+import com.hsj.entity.GetSession;
+import com.hsj.entity.temporary.UserClass;
 import com.hsj.servier.UserServicer;
+import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
 import org.apache.catalina.Session;
 import org.apache.tomcat.util.net.openssl.OpenSSLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.rowset.spi.SyncResolver;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +32,8 @@ public class UserController {
     @Autowired
 
     private UserServicer userService;
+    @Autowired
+    private UserClass userClass;
 
     /**
      * 注册
@@ -35,25 +41,26 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/registerUser")
-    public String register(User user){
+
+    public String register(User user) {
 
         user.setStatus(0);
-        String code = UUIDUtils.getUUID()+ UUIDUtils.getUUID();
+        String code = UUIDUtils.getUUID() + UUIDUtils.getUUID();
         user.setCode(code);
         userService.register(user);
         return "success";
     }
 
     /**
-     *校验邮箱中的code激活账户
+     * 校验邮箱中的code激活账户
      * 首先根据激活码code查询用户，之后再把状态修改为"1"
      */
     @RequestMapping(value = "/checkCode")
-    public String checkCode(String code){
+    public String checkCode(String code) {
         User user = userService.checkCode(code);
         System.out.println(user);
         //如果用户不等于null，把用户状态修改status=1
-        if (user !=null){
+        if (user != null) {
             user.setStatus(1);
             //把code验证码清空，已经不需要了
             user.setCode("");
@@ -67,12 +74,18 @@ public class UserController {
     public String loginin(User user, HttpServletRequest request) {
         List<User> list = (List<User>) request.getServletContext().getAttribute("alluser");
         if (user.havauser(list)) {
-            request.getSession().setAttribute("user", user);
-            String name=(user.getUsername().substring(0,1).toUpperCase());
-            request.getSession().setAttribute("name", name);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            String name = (user.getUsername().substring(0, 1).toUpperCase());
+            session.setAttribute("name", name);
+            try {
+                userClass.goser("D:\\userclass\\data.ser",user);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return "index";
         }
-       request.getSession().setAttribute("msg","密码或账号错误");
+        request.getSession().setAttribute("msg", "密码或账号错误");
         return "login";
     }
 }

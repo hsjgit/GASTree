@@ -39,8 +39,7 @@ ddsmoothmenu.init({
     <div id="templatemo_header">
         <div id="site_title"><h1><a th:href="@{/}" href="#">Growth and Sharing Tree</a></h1></div>
         <div id="header_right">
-            <p>
-                <a href="#">My Follow</a> | <a th:href="@{/donatebooks}" href="#">My Tree</a> | <a href="#">My Book</a> | <a href="#">Donate books</a> | <a th:href="@{/loginPage(user=1)}">Login in</a></p>
+            <a th:href="@{/shu}" href="#">My Tree</a> | <a th:href="@{/donatebooks}" href="#">Our Tree</a> | <a th:href="@{/getbook}" href="#">My Book</a> | <a th:href="@{/book}" href="#">Donate books</a> | <a th:href="@{/user/home}" th:text="${session.name}==null?'Login in':${session.name}" ></a>| <a href="/">积分：0</a>
         </div>
         <div class="cleaner"></div>
     </div> <!-- END of templatemo_header -->
@@ -74,24 +73,26 @@ ddsmoothmenu.init({
                 <h3>推荐</h3>
                 <div class="content">
                     <ul class="sidebar_list">
-                        <li class="first"><a th:href="@{/learnjava}" href="#">java</a></li>
+                        <li class="first"><a th:href="@{/learnjava}" href="#">我的博客</a></li>
                         <li><a href="#">大数据</a></li>
                         <li><a href="#">机器学习</a></li>
                         <li><a th:href="@{http://hsj.flyaha.top/}" href="hsj.flyaha.top">waja</a></li>
-                        <li><a href="#">小贾</a></li>
-                        <li><a href="#">Adai</a></li>
+                        <li><a href="#">计算机网络</a></li>
+                        <li><a href="#">操作系统</a></li>
+                        <li><a href="#">数据库</a></li>
+                        <li><a href="#">HTML+CSS+JavaScript</a></li>
+                        <li><a href="#">Linux</a></li>
                         <li><a href="#">数据结构</a></li>
                         <li><a th:href="@{/book}" href="#">公益</a></li>
-                        <li><a th:href="@{/getbook}" href="#">给自己弄本书</a></li>
-                        <li><a th:href="@{/sky}" href="adai/tpmo/contact.html">这个有点意思</a></li>
+                        <li><a th:href="@{/getbook}" href="#">制作本书</a></li>
+                        <li><a th:href="@{/sky}" href="adai/tpmo/contact.html">关系图</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div id="content" class="float_r">
-        	<h1>Contact Us</h1>
+        	<h1>捐书信息填写</h1>
             <div class="content_half float_l">
-                <p>Etiam eget leo nisl. Morbi magna enim, lobortis vitae condimentum eu, ultrices a lacus.</p>
                 <div id="contact_form">
                    <form method="post" name="contact" th:action="@{/server2}">
                        <label for="author">Book</label> <input type="text" id="bookname" name="bookname" class="required input_field" />

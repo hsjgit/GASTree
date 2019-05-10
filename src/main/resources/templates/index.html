@@ -50,7 +50,7 @@ ddsmoothmenu.init({
 	<div id="templatemo_header">
     	<div id="site_title"><h1><a th:href="@{/}" href="#">Growth and Sharing Tree</a></h1></div>
         <div id="header_right">
-            <a th:href="@{/shu}" href="#">My Follow</a> | <a th:href="@{/donatebooks}" href="#">My Tree</a> | <a th:href="@{/getbook}" href="#">My Book</a> | <a th:href="@{/book}" href="#">Donate books</a> | <a th:href="@{/user/home}" th:text="${session.name}==null?'Login in':${session.name}" ></a>| <a href="/">积分：0</a>
+            <a th:href="@{/shu}" href="#">My Tree</a> | <a th:href="@{/donatebooks}" href="#">Our Tree</a> | <a th:href="@{/getbook}" href="#">My Book</a> | <a th:href="@{/book}" href="#">Donate books</a> | <a th:href="@{/user/home}" th:text="${session.name}==null?'Login in':${session.name}" ></a>| <a href="/">积分：0</a>
 		</div>
         <div class="cleaner"></div>
     </div> <!-- END of templatemo_header -->
@@ -87,11 +87,14 @@ ddsmoothmenu.init({
                         <li><a href="#">大数据</a></li>
                         <li><a href="#">机器学习</a></li>
                         <li><a th:href="@{http://hsj.flyaha.top/}" href="hsj.flyaha.top">waja</a></li>
-                        <li><a href="#">小贾</a></li>
-                        <li><a href="#">Adai</a></li>
+                        <li><a href="#">计算机网络</a></li>
+                        <li><a href="#">操作系统</a></li>
+                        <li><a href="#">数据库</a></li>
+                        <li><a href="#">HTML+CSS+JavaScript</a></li>
+                        <li><a href="#">Linux</a></li>
                         <li><a href="#">数据结构</a></li>
                         <li><a th:href="@{/book}" href="#">公益</a></li>
-                        <li><a th:href="@{/getbook}" href="#">给自己弄本书</a></li>
+                        <li><a th:href="@{/getbook}" href="#">制作本书</a></li>
                         <li><a th:href="@{/sky}" href="adai/tpmo/contact.html">关系图</a></li>
                     </ul>
                 </div>

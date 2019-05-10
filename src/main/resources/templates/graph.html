@@ -84,7 +84,7 @@ under the License.
                     var option = {
                         aria: {
                             show: true,
-                            description: 'Les Miserables 的关系主要分为六个区域，这张图描述了他们之间的相互关联。'
+                            description: 'Les 的关系主要分为六个区域，这张图描述了他们之间的相互关联。'
                         },
                         tooltip: {},
                         legend: [{
@@ -97,7 +97,7 @@ under the License.
                         animationEasingUpdate: 'quinticInOut',
                         series : [
                             {
-                                name: 'Les Miserables',
+                                name: 'Waja',
                                 type: 'graph',
                                 layout: 'none',
                                 data: graph.nodes,
@@ -147,14 +147,14 @@ under the License.
                         manualFocusNodeAdjacency: function () {
                             chart.dispatchAction({
                                 type: 'focusNodeAdjacency',
-                                seriesName: 'Les Miserables',
+                                seriesName: 'waja',
                                 dataIndex: 2
                             });
                         },
                         manualUnfocusNodeAdjacency: function () {
                             chart.dispatchAction({
                                 type: 'unfocusNodeAdjacency',
-                                seriesName: 'Les Miserables'
+                                seriesName: 'waja'
                             });
                         },
                         'circular.rotateLabel': false
@@ -169,7 +169,7 @@ under the License.
                         .onChange(function (value) {
                             chart.setOption({
                                 series: [{
-                                    name: 'Les Miserables',
+                                    name: 'waja',
                                     layout: value
                                 }]
                             });
@@ -178,7 +178,7 @@ under the License.
                         .onChange(function (value) {
                             chart.setOption({
                                 series: [{
-                                    name: 'Les Miserables',
+                                    name: 'waja',
                                     focusNodeAdjacency: value
                                 }]
                             });
@@ -189,7 +189,7 @@ under the License.
                         .onChange(function (value) {
                             chart.setOption({
                                 series: [{
-                                    name: 'Les Miserables',
+                                    name: 'waja',
                                     circular: {rotateLabel: !!value}
                                 }]
                             });

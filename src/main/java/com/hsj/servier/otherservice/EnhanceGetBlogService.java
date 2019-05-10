@@ -30,6 +30,7 @@ public class EnhanceGetBlogService {
         GetBlog getBlog = new GetBlog();
         blogToGetBolog.getblog(blog, getBlog);
         getBlog.setAuthor(user.getUsername());
+        System.out.println(user.getUsername());
         getBlog.setVideo(video);
         getService.add(getBlog);
     }

@@ -19,7 +19,7 @@ public class MyConfig implements WebMvcConfigurer {
         registry.addViewController("/k").setViewName("three/webgl_animation_keyframes");//日漫
         registry.addViewController("/t").setViewName("three/webgl_geometry_terrain_raycast");//土
         registry.addViewController("/he").setViewName("three/webgl_lights_hemisphere");//火烈鸟
-        registry.addViewController("/mo").setViewName("three/webgl_morphtargets_horse");//马
+        registry.addViewController("/h").setViewName("h");//马
         registry.addViewController("/g").setViewName("gltf");
         registry.addViewController("/ed").setViewName("blog/edit");
         registry.addViewController("/pageindex").setViewName("determinePage/index");
@@ -55,6 +55,11 @@ public class MyConfig implements WebMvcConfigurer {
     //    registry.addResourceHandler("/static*//**").addResourceLocations("classpath:/static*//**");
 
    // }
+
+    /**
+     * <p>解决视频传输的问题<p/>
+     * @return
+     */
    @Bean
    public MultipartConfigElement multipartConfigElement() {
        MultipartConfigFactory factory = new MultipartConfigFactory();
@@ -62,4 +67,7 @@ public class MyConfig implements WebMvcConfigurer {
        factory.setMaxRequestSize("102400KB");
        return factory.createMultipartConfig();
    }
+
+
+
 }

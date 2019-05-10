@@ -9,7 +9,7 @@
       <attribute id="modularity_class" title="Modularity Class" type="integer"></attribute>
     </attributes>
     <nodes>
-      <node id="0" label="Myriel">
+      <node id="0" label="hadoop">
         <attvalues>
           <attvalue for="modularity_class" value="0"></attvalue>
         </attvalues>
@@ -193,7 +193,7 @@
         <viz:position x="-459.1107" y="-362.5133" z="0.0"></viz:position>
         <viz:color r="236" g="81" b="72"></viz:color>
       </node>
-      <node id="23" label="Fantine">
+      <node id="23" label="Linux">
         <attvalues>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -209,7 +209,7 @@
         <viz:position x="4.6313396" y="-273.8517" z="0.0"></viz:position>
         <viz:color r="236" g="81" b="72"></viz:color>
       </node>
-      <node id="25" label="Thenardier">
+      <node id="25" label="计算机网络">
         <attvalues>
           <attvalue for="modularity_class" value="7"></attvalue>
         </attvalues>
@@ -393,7 +393,7 @@
         <viz:position x="488.13535" y="356.8573" z="0.0"></viz:position>
         <viz:color r="236" g="81" b="72"></viz:color>
       </node>
-      <node id="48" label="Gavroche">
+      <node id="48" label="算法">
         <attvalues>
           <attvalue for="modularity_class" value="8"></attvalue>
         </attvalues>
@@ -449,7 +449,7 @@
         <viz:position x="137.69348" y="196.1069" z="0.0"></viz:position>
         <viz:color r="236" g="81" b="72"></viz:color>
       </node>
-      <node id="55" label="Marius">
+      <node id="55" label="数据结构">
         <attvalues>
           <attvalue for="modularity_class" value="6"></attvalue>
         </attvalues>

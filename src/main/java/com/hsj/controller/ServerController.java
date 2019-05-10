@@ -7,11 +7,16 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.sound.midi.Soundbank;
 
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * @author 黄仕杰
@@ -57,13 +62,10 @@ public class ServerController {
      */
     @RequestMapping(value = "/xs")
     public String a(@RequestParam Map<String,String> map,HttpServletRequest request) {
-        int num = map.size()*20;
-        if (num < 10000000) {
-            request.getSession().setAttribute("hmp","积分不够");
-            return "a";
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey()+"-----"+entry.getValue());
         }
-        request.getSession().setAttribute("hmp","确定");
-        return "a";
+        return "index";
     }
     /**
      * <p>跳到home页面，因为没有做登录拦截所以就手动判断了session有没有user，没有做登录拦截是应为
