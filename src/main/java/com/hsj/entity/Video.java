@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+import java.util.logging.Level;
 
 /**
  * <p>处理视屏的一些方法<p/>
@@ -15,7 +16,7 @@ import java.util.UUID;
  */
 @Component
 public class Video {
-    public void upload(MultipartFile video) throws IOException {
+    public String upload(MultipartFile video) throws IOException {
         String name = video.getOriginalFilename();
         String dirparh = "D:\\intelliJ\\java_idea\\agorithmweb\\src\\main\\resources\\resources\\video\\";
         File file = new File(dirparh);
@@ -26,6 +27,19 @@ public class Video {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String time=format.format(new Date());
         String newName = UUID.randomUUID() + time+name.substring(name.lastIndexOf("."));
-        video.transferTo(new File(file+newName));
+        video.transferTo(new File(dirparh + "\\"+newName));
+        return dirparh + "\\"+newName;
+    }
+
+    public String getvideopath(String content) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = content.indexOf("(")+1; i < content.length(); i++) {
+            if (content.charAt(i) == ')') {
+                break;
+            }else {
+                stringBuilder.append(content.charAt(i));
+            }
+        }
+        return stringBuilder.toString();
     }
 }

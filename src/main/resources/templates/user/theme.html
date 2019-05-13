@@ -119,9 +119,9 @@
     <div id="templatemo_wrapper">
 
         <div id="templatemo_header">
-            <div id="site_title"><h1><a th:href="@{/}" href="#">Growth and Sharing Tree</a></h1></div>
+            <div id="site_title"><h1><a th:href="@{/}" href="#" style="font-size: 15px">Growth and Sharing Tree</a></h1></div>
             <div id="header_right">
-                <a th:href="@{/shu}" href="#">My Tree</a> | <a th:href="@{/donatebooks}" href="#">Our Tree</a> | <a th:href="@{/getbook}" href="#">My Book</a> | <a th:href="@{/book}" href="#">Donate books</a> | <a th:href="@{/user/home}" th:text="${session.name}==null?'Login in':${session.name}" ></a>| <a href="/">积分：0</a>
+                <a th:href="@{/shu}" href="#">My Tree</a> | <a th:href="@{/donatebooks}" href="#">Our Trees</a> | <a th:href="@{/getbook}" href="#">My Book</a> | <a th:href="@{/germination}" href="#">Donate books</a> | <a th:href="@{/user/home}" th:text="${session.name}==null?'Login in':${session.name}" ></a>| <a href="/">积分：0</a>
             </div>
             <div class="cleaner"></div>
         </div> <!-- END of templatemo_header -->
@@ -165,31 +165,25 @@
                             <li><a href="#">HTML+CSS+JavaScript</a></li>
                             <li><a href="#">Linux</a></li>
                             <li><a href="#">数据结构</a></li>
-                            <li><a th:href="@{/book}" href="#">公益</a></li>
+                            <li><a th:href="@{/germination}" href="#">公益</a></li>
                             <li><a th:href="@{/getbook}" href="#">制作本书</a></li>
                             <li><a th:href="@{/sky}" href="adai/tpmo/contact.html">关系图</a></li>
                         </ul>
                     </div>
                 </div>
+                <h3>MySQL架构</h3>
+                <a th:href="'http://blog.flyaha.top/index.php/archives/79/'" style=""><p>一、管理安全</p>
+                    <p>每个客户端都会在MySQL进程中拥有一个线程，该连接的查询只会在这个单独的线程中执行。</p>
+                    <p>MySQL5.5支持了线程池插件，使用线程池中的少量线程服务大量链接。</p></a>
             </div>
             <div id="content" class="float_r">
-                <h1>给自己制作一本书</h1>
+                <h1>捐赠一本书试试</h1>
+                <p  style="color: #ff0000;">积分不够</p>
                 <div class="content_half float_l">
                     <div id="contact_form">
-                        <form method="post" action="/xs">
+                        <form method="post" action="/xs?thing=gevibook">
                             <div class="cloudTableAuto">
-                                <!-- 第一个table -->
-                                <table class="cloudTable cloudMtxTableHead">
 
-                                    <thead class="cloudTable_header">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>编号</th>
-                                        <th>书名</th>
-                                        <th>作者</th>
-                                    </tr>
-                                    </thead>
-                                </table >
                                 <!-- 第二个table 外层包裹div并设置高度，超出出现滚动条 -->
                                 <div class="cloudMtxTable_body">
                                     <table class="cloudTable"  style="table-layout:fixed">
@@ -203,30 +197,22 @@
                                             <col width="150px">
                                             <col width="">
                                         </colgroup>
-                                        <tbody class="cloudTable_body ">
-                                        <tr>
-                                            <td><input type="checkbox" th:name="1" th:value="java总结"/>1</td>
-                                            <td>java总结</td>
-                                            <td>2019-4-2</td>
-                                            <td>@waja</td>
+                                        <tbody class="cloudTable_body" >
+                                        <tr style="background-color: #EEEEF0">
+                                            <td>#</td>
+                                            <td>编号</td>
+                                            <td>书名</td>
+                                            <td>库存</td>
+                                        </tr >
+                                        <tr th:each="emp:${destination}">
+                                            <td><input type="checkbox" th:name="${emp.id}" th:value="${emp.booknumber}"/></td>
+                                            <td th:text="${emp.booknumber}">java总结</td>
+                                            <td th:text="${emp.bookname}">2019-4-2</td>
+                                            <td th:text="${emp.number}">@waja</td>
                                         </tr>
-                                        <tr>
-                                            <td><input type="checkbox" th:name="2" th:value=数据结构入门/>2</td>
-                                            <td>数据结构入门</td>
-                                            <td>2019-4-21</td>
-                                            <td>@waja</td>
-                                        </tr> <tr>
-                                            <td><input type="checkbox" th:name="1" th:value="计算机网络"/>3</td>
-                                            <td>计算机网络的一点总结</td>
-                                            <td>2019-5-2</td>
-                                            <td>@waja</td>
-                                        </tr>
-
                                         </tbody>
-
                                     </table>
-                                    <input type="checkbox" th:name="waja" th:value="1"/>我要参加<br/>
-                                    <input type="submit" th:value="提交" onclick="javaScript:alert('积分不够')"/>
+                                    <input type="submit" th:value="提交" onclick="javaScript:alert('积分不够')" style="height: 35px;width: 81px"/>
                                 </div>
                             </div>
                         </form>

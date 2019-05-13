@@ -63,7 +63,8 @@ public class DzhiZhuan {
     }
 
     public static void main(String[] args) {
-        Map<String,String> map=DzhiZhuan.getGeocoderLatitude("重庆邮电大学移通学院");
+        Map<String,String> map=DzhiZhuan.getGeocoderLatitude("山西" +
+                "");
         System.out.println(map.get("经度"));
         System.out.println(map.get("纬度"));
     }

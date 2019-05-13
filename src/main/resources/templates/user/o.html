@@ -17,11 +17,41 @@
   <script src="build/three.js"></script>
   <!-- 引入threejs扩展控件OrbitControls.js -->
   <script src="js/controls/OrbitControls.js"></script>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+  </style>
 </head>
 
 <body>
-<div style="background: #000000;width: 1920px;height: 100px;">
-  <a id="aa" style="text-decoration: none;color: #ffffff" th:href="@{/}">返回</a>
+<div style="background: #5E646A;width: 1920px;height: 46px;">
+  <ul>
+    <li><a class="active" href="/">首页</a></li>
+    <li><a href="/germination">捐书</a></li>
+    <li><a href="/getbook">我的博客</a></li>
+    <li><a href="#about">关于</a></li>
+  </ul>
 </div>
 
   <script>
@@ -93,7 +123,7 @@
      */
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(width, height); //设置渲染区域尺寸
-    // renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
+     renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
     document.body.appendChild(renderer.domElement); //body元素中插入canvas对象
 
     // 渲染函数

@@ -56,7 +56,7 @@ public class FunctionController {
      * @param video 视频文件
      * @return
      */
-    @RequestMapping(value = "/video")
+    /*@RequestMapping(value = "/video")
     public String uploadvideo(MultipartFile video) {
         try {
             uservideo.upload(video);
@@ -65,5 +65,5 @@ public class FunctionController {
             e.printStackTrace();
             return "redirect:/getblog";
         }
-    }
+    }*/
 }

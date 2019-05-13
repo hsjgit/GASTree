@@ -14,12 +14,6 @@ public class MyConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/e").setViewName("adai/tpmo/contact");
-        registry.addViewController("/h").setViewName("three/webgl_lightshafts");
-        registry.addViewController("/in").setViewName("indexadai");
-        registry.addViewController("/k").setViewName("three/webgl_animation_keyframes");//日漫
-        registry.addViewController("/t").setViewName("three/webgl_geometry_terrain_raycast");//土
-        registry.addViewController("/he").setViewName("three/webgl_lights_hemisphere");//火烈鸟
-        registry.addViewController("/h").setViewName("h");//马
         registry.addViewController("/g").setViewName("gltf");
         registry.addViewController("/ed").setViewName("blog/edit");
         registry.addViewController("/pageindex").setViewName("determinePage/index");

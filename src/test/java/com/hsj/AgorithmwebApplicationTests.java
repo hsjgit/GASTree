@@ -2,7 +2,9 @@ package com.hsj;
 
 
 import com.hsj.bean.AllDetinationBook;
+import com.hsj.entity.Video;
 import com.hsj.mapper.AllDetinationBookMapper;
+import com.hsj.servier.impl.AllDetinationBookImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,9 @@ import java.util.Calendar;
 @SpringBootTest
 public class AgorithmwebApplicationTests {
 	@Autowired
-	private AllDetinationBookMapper bookMapper;
+	private AllDetinationBookImpl bookMapper;
+	@Autowired
+	private Video video;
 	@Test
 	public void a() throws Exception {
 		Gexf gexf = new GexfImpl();
@@ -84,11 +88,7 @@ public class AgorithmwebApplicationTests {
 	}
 	@Test
 	public void b() {
-		AllDetinationBook book = new AllDetinationBook();
-		book.setBookname("百科全书");
-		book.setBooknumber("0004");
-		book.setNumber(2036);
-		bookMapper.add(book);
+		System.out.println(video.getvideopath("![](D:\\intelliJ\\java_idea\\agorithmweb\\src\\main\\resources\\resources\\video\\\\6f67bf83-bab5-4202-90cd-2caec3cd50be2019-05-11.mp4)"));
 
 	}
 }

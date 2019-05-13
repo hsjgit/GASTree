@@ -48,9 +48,9 @@ ddsmoothmenu.init({
 <div id="templatemo_wrapper">
 
 	<div id="templatemo_header">
-    	<div id="site_title"><h1><a th:href="@{/}" href="#">Growth and Sharing Tree</a></h1></div>
+    	<div id="site_title"><h1><a th:href="@{/}" href="#" style="font-size: 15px">Growth and Sharing Tree</a></h1></div>
         <div id="header_right">
-            <a th:href="@{/shu}" href="#">My Tree</a> | <a th:href="@{/donatebooks}" href="#">Our Tree</a> | <a th:href="@{/getbook}" href="#">My Book</a> | <a th:href="@{/book}" href="#">Donate books</a> | <a th:href="@{/user/home}" th:text="${session.name}==null?'Login in':${session.name}" ></a>| <a href="/">积分：0</a>
+            <a th:href="@{/shu}" href="#">My Tree</a> | <a th:href="@{/donatebooks}" href="#">Our Trees</a> | <a th:href="@{/getbook}" href="#">My Book</a> | <a th:href="@{/germination}" href="#">Donate books</a> | <a th:href="@{/user/home}" th:text="${session.name}==null?'Login in':${session.name}" ></a>| <a href="/">积分：0</a>
 		</div>
         <div class="cleaner"></div>
     </div> <!-- END of templatemo_header -->
@@ -93,12 +93,16 @@ ddsmoothmenu.init({
                         <li><a href="#">HTML+CSS+JavaScript</a></li>
                         <li><a href="#">Linux</a></li>
                         <li><a href="#">数据结构</a></li>
-                        <li><a th:href="@{/book}" href="#">公益</a></li>
+                        <li><a th:href="@{/germination}" href="#">公益</a></li>
                         <li><a th:href="@{/getbook}" href="#">制作本书</a></li>
                         <li><a th:href="@{/sky}" href="adai/tpmo/contact.html">关系图</a></li>
                     </ul>
                 </div>
             </div>
+            <h3>MySQL架构</h3>
+            <a th:href="'http://blog.flyaha.top/index.php/archives/79/'" style=""><p>一、管理安全</p>
+                <p>每个客户端都会在MySQL进程中拥有一个线程，该连接的查询只会在这个单独的线程中执行。</p>
+                <p>MySQL5.5支持了线程池插件，使用线程池中的少量线程服务大量链接。</p></a>
         </div>
         <div id="content" class="float_r">
 

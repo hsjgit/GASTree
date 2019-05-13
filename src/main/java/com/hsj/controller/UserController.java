@@ -2,25 +2,15 @@ package com.hsj.controller;
 
 import com.hsj.common.UUIDUtils;
 import com.hsj.bean.User;
-import com.hsj.entity.GetSession;
 import com.hsj.entity.temporary.UserClass;
 import com.hsj.servier.UserServicer;
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
-import org.apache.catalina.Session;
-import org.apache.tomcat.util.net.openssl.OpenSSLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sql.rowset.spi.SyncResolver;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author waja

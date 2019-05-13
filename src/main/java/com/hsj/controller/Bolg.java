@@ -3,7 +3,7 @@ package com.hsj.controller;
 import com.hsj.bean.Blog;
 
 import com.hsj.bean.User;
-import com.hsj.entity.GetSession;
+import com.hsj.entity.Video;
 import com.hsj.entity.temporary.UserClass;
 import com.hsj.servier.impl.GetServiceImpl;
 import com.hsj.servier.otherservice.EnhanceGetBlogService;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -43,6 +42,8 @@ public class Bolg {
     private EnhanceGetBlogService enhanceGetBlogService;
     @Autowired
     private UserClass userClass;
+    @Autowired
+    private Video video;
     /**
      * 把提交的博客的存储的路径存到数据库
      * @param blog
@@ -55,7 +56,7 @@ public class Bolg {
             request.getSession().setAttribute("user", user);
             System.out.println(request.getSession().getAttribute("user"));
             String path = givePath.getPath(blog);
-            PrintWriter printWriter = new PrintWriter(new FileWriter("D:\\blog\\网络.txt"), true );
+            PrintWriter printWriter = new PrintWriter(new FileWriter(path), true );
             Scanner in = new Scanner(blog.getContent());
             while (in.hasNext()) {
                 printWriter.println(in.nextLine());
@@ -64,7 +65,8 @@ public class Bolg {
            /* System.out.println(request.getSession().getId());
             User user = GetSession.getuser(request);*/
             //这里还有一个视屏路径的问题，不知道怎么把博客和视屏路径一起传给后台
-            enhanceGetBlogService.addPath(blog,user,"dsa");
+            String videopath = video.getvideopath(blog.getContent());
+            enhanceGetBlogService.addPath(blog,user,videopath);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -165,27 +167,36 @@ public class Bolg {
         request.setAttribute("code", str);
         return "blog/makehtml";
     }
-    @RequestMapping("/l")
-    public String la(){
-        return "loader";
-    }
+
+    /**
+     * <p>视频和图片的上传<p/>
+     * @param file
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value="/uploadimg")
     public Map<String,Object> demo(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file, HttpServletRequest request) {
         Map<String,Object> resultMap = new HashMap<>();
-        System.out.println(request.getContextPath());
         String realPath = UPLOADED_FOLDER;
         String fileName = file.getOriginalFilename();
-        System.out.println(fileName);
+        String[] split = fileName.split("\\.");
+        String newpath;
         //保存
         try {
-/*            file.transferTo(targetFile);*/
-            byte[] bytes = file.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-            Files.write(path, bytes);
+            if (split[split.length-1].equals("mp4")){
+                String str=video.upload(file);
+                Path path = Paths.get(str);
+                newpath = str;
+            }else {
+                byte[] bytes = file.getBytes();
+                newpath = UPLOADED_FOLDER + file.getOriginalFilename();
+                Path path = Paths.get(newpath);
+                Files.write(path, bytes);
+            }
             resultMap.put("success", 1);
             resultMap.put("message", "上传成功！");
-            resultMap.put("url",UPLOADED_FOLDER+fileName);
+            resultMap.put("url", newpath);
         } catch (Exception e) {
             resultMap.put("success", 0);
             resultMap.put("message", "上传失败！");

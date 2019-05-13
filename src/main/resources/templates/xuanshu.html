@@ -121,7 +121,7 @@
         <div id="templatemo_header">
             <div id="site_title"><h1><a th:href="@{/}" href="#">Growth and Sharing Tree</a></h1></div>
             <div id="header_right">
-                <a th:href="@{/shu}" href="#">My Tree</a> | <a th:href="@{/donatebooks}" href="#">Our Tree</a> | <a th:href="@{/getbook}" href="#">My Book</a> | <a th:href="@{/book}" href="#">Donate books</a> | <a th:href="@{/user/home}" th:text="${session.name}==null?'Login in':${session.name}" ></a>| <a href="/">积分：0</a>
+                <a th:href="@{/shu}" href="#">My Tree</a> | <a th:href="@{/donatebooks}" href="#">Our Trees</a> | <a th:href="@{/getbook}" href="#">My Book</a> | <a th:href="@{/book}" href="#">Donate books</a> | <a th:href="@{/user/home}" th:text="${session.name}==null?'Login in':${session.name}" ></a>| <a href="/">积分：0</a>
             </div>
             <div class="cleaner"></div>
         </div> <!-- END of templatemo_header -->
@@ -171,25 +171,19 @@
                         </ul>
                     </div>
                 </div>
+                <h3>MySQL架构</h3>
+                <a th:href="'http://blog.flyaha.top/index.php/archives/79/'" style=""><p>一、管理安全</p>
+                <p>每个客户端都会在MySQL进程中拥有一个线程，该连接的查询只会在这个单独的线程中执行。</p>
+                    <p>MySQL5.5支持了线程池插件，使用线程池中的少量线程服务大量链接。</p></a>
             </div>
             <div id="content" class="float_r">
                 <h1>给自己制作一本书</h1>
+                <p th:text="${m}" style="color: #ff0000;"></p>
                 <div class="content_half float_l">
                     <div id="contact_form">
-                        <form method="post" action="/xs">
+                        <form method="post" action="/xs?thing=makebook">
                             <div class="cloudTableAuto">
-                                <!-- 第一个table -->
-                                <table class="cloudTable cloudMtxTableHead">
 
-                                    <thead class="cloudTable_header">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>博客标题</th>
-                                        <th>时间</th>
-                                        <th>作者</th>
-                                    </tr>
-                                    </thead>
-                                </table >
                                 <!-- 第二个table 外层包裹div并设置高度，超出出现滚动条 -->
                                 <div class="cloudMtxTable_body">
                                     <table class="cloudTable"  style="table-layout:fixed">
@@ -204,19 +198,25 @@
                                             <col width="">
                                         </colgroup>
                                         <tbody class="cloudTable_body ">
+                                        <tr style="background-color: #EEEEF0">
+                                            <td>#</td>
+                                            <td>博客标题</td>
+                                            <td>时间</td>
+                                            <td>作者</td>
+                                        </tr >
                                         <tr>
-                                            <td><input type="checkbox" th:name="1" th:value="java总结"/>1</td>
+                                            <td><input type="checkbox" th:name="1" th:value="java总结"/></td>
                                             <td>java总结</td>
                                             <td>2019-4-2</td>
                                             <td>@waja</td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" th:name="2" th:value=数据结构入门/>2</td>
+                                            <td><input type="checkbox" th:name="2" th:value=数据结构入门/></td>
                                             <td>数据结构入门</td>
                                             <td>2019-4-21</td>
                                             <td>@waja</td>
                                         </tr> <tr>
-                                            <td><input type="checkbox" th:name="1" th:value="计算机网络"/>3</td>
+                                            <td><input type="checkbox" th:name="3" th:value="计算机网络"/></td>
                                             <td>计算机网络的一点总结</td>
                                             <td>2019-5-2</td>
                                             <td>@waja</td>
@@ -225,8 +225,8 @@
                                         </tbody>
 
                                     </table>
-                                    <input type="checkbox" th:name="waja" th:value="1"/>我要参加<br/>
-                                    <input type="submit" th:value="提交" onclick="javaScript:alert('积分不够')"/>
+                                    <!--<input type="checkbox" th:name="waja" th:value="1" />我要参加<br/>-->
+                                    <input type="submit" th:value="提交" onclick="javaScript:f()" style="height: 35px;width: 81px"/>
                                 </div>
                             </div>
                         </form>
@@ -251,5 +251,15 @@
     </div> <!-- END of templatemo_wrapper -->
 </div> <!-- END of templatemo_body_wrapper -->
 <script src="js/diquxuanzhe.js"></script>
+<script>
+    function f() {
+        if (confirm("参加编书的过程")){
+
+            alert("参加")
+        } else {
+            alert("不参加")
+        }
+    }
+</script>
 </body>
 </html>

@@ -16,7 +16,7 @@ import java.util.List;
 public class GetServiceImpl implements IGetservier {
 
     @Autowired
-    private GetBlogMapper servier;
+    private GetBlogMapper server;
     /**
      * <p>添加博客<p/>
      *
@@ -24,7 +24,7 @@ public class GetServiceImpl implements IGetservier {
      */
     @Override
     public void add(GetBlog getBlog) {
-        servier.add(getBlog);
+        server.add(getBlog);
     }
 
     /**
@@ -34,7 +34,7 @@ public class GetServiceImpl implements IGetservier {
      */
     @Override
     public void updata(GetBlog getBlog) {
-        servier.updata(getBlog);
+        server.updata(getBlog);
     }
 
     /**
@@ -44,7 +44,7 @@ public class GetServiceImpl implements IGetservier {
      */
     @Override
     public void delete(GetBlog getBlog) {
-        servier.delete(getBlog);
+        server.delete(getBlog);
     }
 
     /**
@@ -55,6 +55,6 @@ public class GetServiceImpl implements IGetservier {
      */
     @Override
     public List<GetBlog> select(String author) {
-        return servier.select(author);
+        return server.select(author);
     }
 }

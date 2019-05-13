@@ -61,11 +61,16 @@ public class ServerController {
      * @return
      */
     @RequestMapping(value = "/xs")
-    public String a(@RequestParam Map<String,String> map,HttpServletRequest request) {
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            System.out.println(entry.getKey()+"-----"+entry.getValue());
+    public String a(Map<String,String> map,HttpServletRequest request,@RequestParam(value = "thing")
+            String thing) {
+        map.put("m", "积分不够");
+        System.out.println(thing);
+        if (thing.equals("makebook")) {
+            return "xuanshu";
+        }else {
+            return "user/theme";
         }
-        return "index";
+
     }
     /**
      * <p>跳到home页面，因为没有做登录拦截所以就手动判断了session有没有user，没有做登录拦截是应为
