@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http://www.gexf.net/1.2draft/viz" version="1.2">
- <meta lastmodifieddate="2019-05-10">
+ <meta lastmodifieddate="2019-05-26">
   <creator>Gephi.org</creator>
   <description>A Web network</description>
  </meta>
@@ -10,13 +10,13 @@
    <attribute id="pageranks" title="PageRank" type="double"/>
   </attributes>
   <nodes count="2">
-   <node id="0" label="郝大通">
+   <node id="0" label="&#x90dd;&#x5927;&#x901a;">
     <attvalues>
      <attvalue for="class" value="3"/>
      <attvalue for="pageranks" value="0.14658"/>
     </attvalues>
    </node>
-   <node id="1" label="郝大通">
+   <node id="1" label="&#x90dd;&#x5927;&#x901a;">
     <attvalues>
      <attvalue for="class" value="3"/>
      <attvalue for="pageranks" value="0.14658"/>

@@ -54,7 +54,6 @@ public class Bolg {
         try {
             User user = (User) userClass.getser("D:\\userclass\\data.ser");
             request.getSession().setAttribute("user", user);
-            System.out.println(request.getSession().getAttribute("user"));
             String path = givePath.getPath(blog);
             PrintWriter printWriter = new PrintWriter(new FileWriter(path), true );
             Scanner in = new Scanner(blog.getContent());
@@ -62,9 +61,6 @@ public class Bolg {
                 printWriter.println(in.nextLine());
             }
             printWriter.flush();
-           /* System.out.println(request.getSession().getId());
-            User user = GetSession.getuser(request);*/
-            //这里还有一个视屏路径的问题，不知道怎么把博客和视屏路径一起传给后台
             String videopath = video.getvideopath(blog.getContent());
             enhanceGetBlogService.addPath(blog,user,videopath);
         } catch (IOException e) {

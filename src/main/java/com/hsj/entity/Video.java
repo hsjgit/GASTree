@@ -21,7 +21,11 @@ public class Video {
         String dirparh = "D:\\intelliJ\\java_idea\\agorithmweb\\src\\main\\resources\\resources\\video\\";
         File file = new File(dirparh);
         if (!file.exists()){
+            //创建一个问价夹
             file.mkdir();
+            //创建一个文件
+            //file.createNewFile();
+
         }
         //给一个新的名字
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
