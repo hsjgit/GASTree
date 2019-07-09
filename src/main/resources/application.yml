@@ -1,7 +1,7 @@
 spring:
   datasource:
-    username: huangshijie
-    password: 123456
+    username: 
+    password: 
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://hsj.flyaha.top:3306/Waja?userUnicode=true&characterEncoding=utf-8
     type: com.alibaba.druid.pool.DruidDataSource
